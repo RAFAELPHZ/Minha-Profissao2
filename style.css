@@ -9,7 +9,7 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #000; /* Fundo preto */
+    background-color:#ffffff; /* Fundo preto */
     color: #fff; /* Texto branco */
     min-height: 100vh; /* Garantir que o body ocupe a altura mínima da tela */
     display: flex;
@@ -18,7 +18,7 @@ body {
 
 /* Estilo do cabeçalho */
 header {
-    background-color: #333; /* Cabeçalho em cinza escuro */
+    background-color: #000000; /* Cabeçalho em cinza escuro */
     color: #fff;
     padding: 20px;
     text-align: center;
