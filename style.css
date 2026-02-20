@@ -9,7 +9,7 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color:#030303; /* Fundo preto */
+    background-color:#fffdfd; /* Fundo preto */
     color: #fff; /* Texto branco */
     min-height: 100vh; /* Garantir que o body ocupe a altura mínima da tela */
     display: flex;
