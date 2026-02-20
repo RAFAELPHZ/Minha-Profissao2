@@ -9,13 +9,13 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #f5f5f5; /* Azul claro de fundo */
+    background-color: #e3f2fd; /* Azul claro de fundo */
     color: #333;
 }
 
 /* Estilo do cabeçalho */
 header {
-    background-color: #00344d; /* Azul suave para o cabeçalho */
+    background-color: #81d4fa; /* Azul suave para o cabeçalho */
     color: #fff;
     padding: 20px;
     text-align: center;
@@ -33,25 +33,32 @@ main {
 section {
     background-color: #fff;
     border-radius: 8px;
-    margin: 20px 0;ok,
+    margin: 20px 0;
     padding: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 section h2 {
     font-size: 1.8rem;
-    color: #002e5c; /* Azul mais forte para o título das seções */
+    color: #1976d2; /* Azul mais forte para o título das seções */
 }
 
-section p {
-    font-size: 1.1rem;
-    margin-top: 10px;
-    line-height: 1.5;
+/* Container de imagem */
+.image-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.image {
+    max-width: 100%; /* Garante que a imagem não ultrapasse o tamanho da tela */
+    height: auto;
+    border-radius: 8px; /* Bordas arredondadas nas imagens */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve na imagem */
 }
 
 /* Estilo do rodapé */
 footer {
-    background-color: #003147; /* Mesmo tom de azul do cabeçalho */
+    background-color: #81d4fa; /* Mesmo tom de azul do cabeçalho */
     color: #fff;
     text-align: center;
     padding: 10px;
