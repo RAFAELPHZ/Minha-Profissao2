@@ -1,0 +1,36 @@
+# Arquivos do Sistema Operacional
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Editores de Código
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.atom/
+
+# Node.js (se usar em futuro)
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Arquivos de Build
+dist/
+build/
+
+# Variáveis de Ambiente
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+
+# Arquivos Temporários
+temp/
+tmp/
+*.tmp
