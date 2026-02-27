@@ -1,321 +1,433 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O Mundo do Programador - Descubra a Profissão</title>
-    <meta name="description" content="Explore o universo da programação: o que faz um programador, áreas de atuação, linguagens, salários, habilidades e tendências do mercado.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>O que faz um Programador?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .logo span {
+            color: #764ba2;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        main {
+            margin-top: 80px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            border-radius: 20px;
+            margin-bottom: 50px;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #667eea;
+            border-bottom: 3px solid #764ba2;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .card p {
+            color: #666;
+        }
+
+        .habilidades {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .habilidade-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1em;
+            font-weight: 500;
+            transition: transform 0.3s;
+        }
+
+        .habilidade-tag:hover {
+            transform: scale(1.1);
+        }
+
+        .carreira-item {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .carreira-item h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .carreira-item ul {
+            margin-left: 20px;
+            color: #666;
+        }
+
+        .carreira-item li {
+            margin-bottom: 10px;
+        }
+
+        .faq-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .faq-item h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .faq-item p {
+            color: #666;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 0;
+            text-align: center;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: #667eea;
+            margin: 0 10px;
+            font-size: 1.5em;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #764ba2;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
+
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .section {
+                padding: 30px;
+            }
+
+            .section h2 {
+                font-size: 2em;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navegação -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="navbar-logo">
-                <span class="logo-icon">&lt;/&gt;</span>
-                <span class="logo-text">Programador</span>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                Dev<span>Explorer</span>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#inicio" class="nav-link">Início</a></li>
-                <li><a href="#o-que-faz" class="nav-link">O Que Faz</a></li>
-                <li><a href="#areas" class="nav-link">Áreas</a></li>
-                <li><a href="#linguagens" class="nav-link">Linguagens</a></li>
-                <li><a href="#mercado" class="nav-link">Mercado</a></li>
-            </ul>
+            <nav>
+                <ul>
+                    <li><a href="#oquee">O que é</a></li>
+                    <li><a href="#oqfaz">O que faz</a></li>
+                    <li><a href="#habilidades">Habilidades</a></li>
+                    <li><a href="#carreira">Carreira</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">O Mundo do Programador</h1>
-            <p class="hero-subtitle">Descubra o que faz um programador, as oportunidades e o futuro da tecnologia</p>
-            <button class="cta-button" onclick="document.getElementById('o-que-faz').scrollIntoView({behavior: 'smooth'})">Explorar Agora</button>
-        </div>
-        <div class="hero-background">
-            <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663388056628/kXgA4xQ6KdEkurB8PUERnV/hero-programmer-45oYpB24ncV2XSpRqnNe9k.webp" alt="Programador trabalhando">
-        </div>
-    </section>
-
-    <!-- O Que Faz um Programador -->
-    <section id="o-que-faz" class="section">
+    <main>
         <div class="container">
-            <h2 class="section-title">O Que Faz um Programador?</h2>
-            <p class="section-subtitle">Um programador é um profissional que escreve, testa e mantém código que faz computadores e dispositivos funcionarem</p>
-            
-            <div class="cards-grid">
-                <div class="card">
-                    <div class="card-icon">💻</div>
-                    <h3>Desenvolvimento</h3>
-                    <p>Escreve código usando diferentes linguagens de programação para criar softwares, aplicativos e sistemas.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🧪</div>
-                    <h3>Testes</h3>
-                    <p>Testa o código para encontrar e corrigir erros, garantindo que tudo funcione corretamente.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🔧</div>
-                    <h3>Manutenção</h3>
-                    <p>Mantém e atualiza sistemas existentes, adicionando novas funcionalidades e corrigindo problemas.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🤝</div>
-                    <h3>Colaboração</h3>
-                    <p>Trabalha em equipe, revisa código de colegas e participa de reuniões de planejamento.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🎯</div>
-                    <h3>Resolução de Problemas</h3>
-                    <p>Analisa desafios técnicos e cria soluções criativas e eficientes usando lógica de programação.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">📚</div>
-                    <h3>Aprendizado Contínuo</h3>
-                    <p>Estuda novas tecnologias e linguagens para se manter atualizado no mercado em constante evolução.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            <section class="hero">
+                <h1>Programador: O Arquiteto do Mundo Digital</h1>
+                <p>Descubra o fascinante mundo da programação e entenda como esses profissionais transformam linhas de código em soluções inovadoras que impactam milhões de pessoas todos os dias.</p>
+            </section>
 
-    <!-- Áreas de Atuação -->
-    <section id="areas" class="section section-dark">
-        <div class="container">
-            <h2 class="section-title">Áreas de Atuação</h2>
-            <p class="section-subtitle">Programadores podem trabalhar em diversas especialidades</p>
-            
-            <div class="areas-grid">
-                <div class="area-card">
-                    <h3>Front-End</h3>
-                    <p>Desenvolve a interface visual que o usuário vê e interage. Trabalha com HTML, CSS e JavaScript.</p>
-                    <div class="tech-tags">
-                        <span class="tag">React</span>
-                        <span class="tag">Vue</span>
-                        <span class="tag">Angular</span>
+            <section id="oquee" class="section">
+                <h2>O que é um Programador?</h2>
+                <p style="font-size: 1.2em; margin-bottom: 30px;">Um programador é um profissional que cria, desenvolve e mantém programas de computador, aplicativos e sistemas digitais. É o tradutor que transforma necessidades humanas em linguagem que os computadores entendem, criando soluções tecnológicas que facilitam nossas vidas.</p>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Criador</h3>
+                        <p>Transforma ideias em realidade digital, criando soluções inovadoras para problemas do mundo real.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Solucionador</h3>
+                        <p>Analisa problemas complexos e encontra soluções eficientes através da tecnologia.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Inovador</h3>
+                        <p>Está sempre aprendendo e se adaptando às novas tecnologias para criar soluções cada vez melhores.</p>
                     </div>
                 </div>
-                <div class="area-card">
-                    <h3>Back-End</h3>
-                    <p>Cria a parte invisível do software: servidores, bancos de dados e lógica de negócio.</p>
-                    <div class="tech-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Node.js</span>
-                        <span class="tag">Java</span>
-                    </div>
-                </div>
-                <div class="area-card">
-                    <h3>Full-Stack</h3>
-                    <p>Trabalha com front-end e back-end, desenvolvendo aplicações completas do zero.</p>
-                    <div class="tech-tags">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">TypeScript</span>
-                        <span class="tag">SQL</span>
-                    </div>
-                </div>
-                <div class="area-card">
-                    <h3>Mobile</h3>
-                    <p>Desenvolve aplicativos para smartphones e tablets em iOS e Android.</p>
-                    <div class="tech-tags">
-                        <span class="tag">Flutter</span>
-                        <span class="tag">React Native</span>
-                        <span class="tag">Swift</span>
-                    </div>
-                </div>
-                <div class="area-card">
-                    <h3>Data Science</h3>
-                    <p>Trabalha com análise de dados, machine learning e inteligência artificial.</p>
-                    <div class="tech-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">R</span>
-                        <span class="tag">TensorFlow</span>
-                    </div>
-                </div>
-                <div class="area-card">
-                    <h3>DevOps</h3>
-                    <p>Gerencia infraestrutura, deploy de aplicações e automação de processos.</p>
-                    <div class="tech-tags">
-                        <span class="tag">Docker</span>
-                        <span class="tag">Kubernetes</span>
-                        <span class="tag">AWS</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Linguagens de Programação -->
-    <section id="linguagens" class="section">
-        <div class="container">
-            <h2 class="section-title">Linguagens Mais Populares</h2>
-            <p class="section-subtitle">As linguagens mais usadas por programadores em 2025</p>
-            
-            <div class="languages-container">
-                <div class="chart-wrapper">
-                    <canvas id="languagesChart"></canvas>
-                </div>
-                <div class="languages-list">
-                    <div class="language-item">
-                        <div class="language-rank">1</div>
-                        <div class="language-info">
-                            <h4>Python</h4>
-                            <p>Versátil, fácil de aprender, usada em web, data science e IA</p>
-                        </div>
+            <section id="oqfaz" class="section">
+                <h2>O que um Programador Faz?</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>💻 Desenvolvimento Web</h3>
+                        <p>Cria sites, sistemas online e aplicações web que usamos diariamente.</p>
                     </div>
-                    <div class="language-item">
-                        <div class="language-rank">2</div>
-                        <div class="language-info">
-                            <h4>JavaScript</h4>
-                            <p>Linguagem da web, essencial para desenvolvimento front-end</p>
-                        </div>
+                    <div class="card">
+                        <h3>📱 Aplicativos Mobile</h3>
+                        <p>Desenvolve apps para smartphones e tablets que facilitam nossa vida.</p>
                     </div>
-                    <div class="language-item">
-                        <div class="language-rank">3</div>
-                        <div class="language-info">
-                            <h4>Java</h4>
-                            <p>Robusta, usada em grandes empresas e sistemas corporativos</p>
-                        </div>
+                    <div class="card">
+                        <h3>🎮 Jogos</h3>
+                        <p>Cria experiências interativas e divertidas para entretenimento.</p>
                     </div>
-                    <div class="language-item">
-                        <div class="language-rank">4</div>
-                        <div class="language-info">
-                            <h4>TypeScript</h4>
-                            <p>Superset do JavaScript com tipagem estática para projetos maiores</p>
-                        </div>
+                    <div class="card">
+                        <h3>🤖 Inteligência Artificial</h3>
+                        <p>Desenvolve sistemas que aprendem e tomam decisões inteligentes.</p>
                     </div>
-                    <div class="language-item">
-                        <div class="language-rank">5</div>
-                        <div class="language-info">
-                            <h4>C#</h4>
-                            <p>Linguagem moderna usada em aplicações .NET e games</p>
-                        </div>
+                    <div class="card">
+                        <h3>🔒 Segurança</h3>
+                        <p>Protege dados e sistemas contra ameaças digitais.</p>
+                    </div>
+                    <div class="card">
+                        <h3>📊 Análise de Dados</h3>
+                        <p>Processa e interpreta grandes volumes de informação.</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Mercado e Salários -->
-    <section id="mercado" class="section section-dark">
-        <div class="container">
-            <h2 class="section-title">Mercado de Trabalho</h2>
-            <p class="section-subtitle">Oportunidades e remuneração na profissão</p>
-            
-            <div class="market-content">
-                <div class="salary-chart-wrapper">
-                    <h3>Faixas Salariais por Experiência</h3>
-                    <canvas id="salaryChart"></canvas>
+            <section id="habilidades" class="section">
+                <h2>Habilidades Essenciais</h2>
+                <p style="margin-bottom: 30px;">Um bom programador combina habilidades técnicas com competências comportamentais:</p>
+                <div class="habilidades">
+                    <span class="habilidade-tag">Python</span>
+                    <span class="habilidade-tag">JavaScript</span>
+                    <span class="habilidade-tag">Java</span>
+                    <span class="habilidade-tag">C++</span>
+                    <span class="habilidade-tag">HTML/CSS</span>
+                    <span class="habilidade-tag">SQL</span>
+                    <span class="habilidade-tag">React</span>
+                    <span class="habilidade-tag">Node.js</span>
+                    <span class="habilidade-tag">Git</span>
+                    <span class="habilidade-tag">Resolução de Problemas</span>
+                    <span class="habilidade-tag">Pensamento Lógico</span>
+                    <span class="habilidade-tag">Trabalho em Equipe</span>
+                    <span class="habilidade-tag">Comunicação</span>
+                    <span class="habilidade-tag">Criatividade</span>
+                    <span class="habilidade-tag">Aprendizado Contínuo</span>
                 </div>
-                <div class="market-stats">
-                    <div class="stat-box">
-                        <div class="stat-number">+500K</div>
-                        <div class="stat-label">Vagas de Programador</div>
-                        <div class="stat-description">Oportunidades ativas no Brasil</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-number">R$ 4.400</div>
-                        <div class="stat-label">Salário Médio</div>
-                        <div class="stat-description">Programador iniciante</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-number">+15%</div>
-                        <div class="stat-label">Crescimento Anual</div>
-                        <div class="stat-description">Demanda por programadores</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Remoto</div>
-                        <div class="stat-description">Oportunidades de trabalho remoto</div>
-                    </div>
-                </div>
-            </div>
+            </section>
 
-            <div class="skills-section">
-                <h3>Habilidades Essenciais</h3>
-                <div class="skills-grid">
-                    <div class="skill-item">
-                        <div class="skill-icon">🧠</div>
-                        <h4>Lógica de Programação</h4>
-                        <p>Capacidade de resolver problemas de forma estruturada</p>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-icon">🔍</div>
-                        <h4>Atenção aos Detalhes</h4>
-                        <p>Precisão na escrita de código e identificação de erros</p>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-icon">🤝</div>
-                        <h4>Trabalho em Equipe</h4>
-                        <p>Colaboração e comunicação com outros profissionais</p>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-icon">📖</div>
-                        <h4>Aprendizado Contínuo</h4>
-                        <p>Disposição para estudar novas tecnologias constantemente</p>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-icon">💡</div>
-                        <h4>Criatividade</h4>
-                        <p>Pensar em soluções inovadoras e otimizadas</p>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-icon">🎯</div>
-                        <h4>Foco em Resultados</h4>
-                        <p>Entregar código de qualidade dentro dos prazos</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Final -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Pronto para Começar sua Jornada como Programador?</h2>
-            <p>Explore recursos de aprendizado, comunidades e oportunidades de carreira</p>
-            <button class="cta-button-large">Descubra Mais</button>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Sobre</h4>
-                    <p>Um guia completo sobre a profissão de programador, oportunidades e tendências do mercado.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Navegação</h4>
+            <section id="carreira" class="section">
+                <h2>Carreira em Programação</h2>
+                <p style="margin-bottom: 30px;">O mercado de tecnologia oferece diversas oportunidades em diferentes níveis:</p>
+                <div class="carreira-item">
+                    <h3>Níveis de Carreira</h3>
                     <ul>
-                        <li><a href="#inicio">Início</a></li>
-                        <li><a href="#o-que-faz">O Que Faz</a></li>
-                        <li><a href="#areas">Áreas</a></li>
-                        <li><a href="#linguagens">Linguagens</a></li>
+                        <li><strong>Júnior:</strong> Início da carreira, aprendizado intensivo e supervisão de seniors</li>
+                        <li><strong>Pleno:</strong> Maior autonomia, liderança de pequenos projetos</li>
+                        <li><strong>Sênior:</strong> Expertise em tecnologias, arquitetura de soluções complexas</li>
+                        <li><strong>Especialista:</strong> Domínio profundo em áreas específicas</li>
+                        <li><strong>Tech Lead:</strong> Liderança técnica e gestão de equipes</li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h4>Recursos</h4>
+                <div class="carreira-item">
+                    <h3>Áreas de Atuação</h3>
                     <ul>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Comunidade</a></li>
-                        <li><a href="#">Cursos</a></li>
-                        <li><a href="#">Vagas</a></li>
+                        <li>Desenvolvimento Web (Front-end, Back-end, Full Stack)</li>
+                        <li>Desenvolvimento Mobile (iOS, Android, Cross-platform)</li>
+                        <li>Ciência de Dados e Machine Learning</li>
+                        <li>DevOps e Infraestrutura</li>
+                        <li>Segurança da Informação</li>
+                        <li>Internet das Coisas (IoT)</li>
+                        <li>Realidade Virtual e Aumentada</li>
+                        <li>Blockchain e Criptomoedas</li>
                     </ul>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 O Mundo do Programador. Todos os direitos reservados.</p>
+            </section>
+
+            <section id="faq" class="section">
+                <h2>Perguntas Frequentes</h2>
+                <div class="faq-item">
+                    <h4>📌 Preciso saber matemática para programar?</h4>
+                    <p>Não necessariamente. Embora algumas áreas como IA e jogos exijam matemática avançada, muitas áreas da programação usam principalmente lógica e raciocínio.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>📌 Quanto tempo leva para aprender a programar?</h4>
+                    <p>Com dedicação, é possível aprender o básico em 3-6 meses. Porém, programação é uma área de aprendizado contínuo - sempre há novas tecnologias para estudar.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>📌 Qual a melhor linguagem para começar?</h4>
+                    <p>Python é frequentemente recomendada para iniciantes por sua sintaxe simples e versatilidade. JavaScript também é ótimo para quem quer ver resultados rápidos na web.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>📌 Programação dá dinheiro?</h4>
+                    <p>Sim! A área de tecnologia tem alta demanda por profissionais qualificados e oferece salários competitivos, além de oportunidades de trabalho remoto.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>📌 Preciso de faculdade para ser programador?</h4>
+                    <p>Não é obrigatório. Muitos programadores são autodidatas ou vêm de cursos técnicos. Porém, uma graduação pode ajudar em oportunidades iniciais e em áreas mais teóricas.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 DevExplorer - Descobrindo o mundo da programação</p>
+            <p>Desenvolvido com 💜 para inspirar futuros programadores</p>
+            <div class="social-links">
+                <a href="#">📱</a>
+                <a href="#">💻</a>
+                <a href="#">📧</a>
+                <a href="#">🔗</a>
             </div>
         </div>
     </footer>
-
-    <script src="js/charts.js"></script>
-    <script src="js/interactions.js"></script>
 </body>
 </html>
-
-
