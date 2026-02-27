@@ -1,0 +1,6 @@
+ubuntu@sandbox:~ $ cd /home/ubuntu/programador-site-html && python3 -m http.server 8000 > /dev/null 2>&1 &
+[1] 2072
+[backgrounded] pid:2072 log:/tmp/terminal-bg-main-1772192551618.log
+ubuntu@sandbox:~ $
+
+
