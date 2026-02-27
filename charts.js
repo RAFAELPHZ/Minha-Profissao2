@@ -249,3 +249,5 @@ window.addEventListener('scroll', () => {
         heroBackground.style.transform = `translateY(${scrollY * 0.5}px)`;
     }
 });
+
+

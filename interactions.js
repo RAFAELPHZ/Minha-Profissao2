@@ -318,4 +318,6 @@ initLazyLoading();
 
 console.log('%c🚀 O Mundo do Programador', 'font-size: 20px; font-weight: bold; color: #6366F1;');
 console.log('%cBem-vindo! Explore o universo da programação.', 'font-size: 14px; color: #06B6D4;');
-console.log('%cDesenvolvido com ❤️ para programadores', 'font-size: 12px; color: #F59E0B;')
+console.log('%cDesenvolvido com ❤️ para programadores', 'font-size: 12px; color: #F59E0B;');
+
+
