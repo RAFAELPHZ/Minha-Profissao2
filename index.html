@@ -5,6 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>O que um Programador Faz?</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos adicionais para a seção de comentários */
+        .estrelas {
+            color: #fbbf24;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+        .comentario-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+        .comentario-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .comentario-info h4 {
+            margin: 0;
+            color: #1e293b;
+        }
+        .comentario-info p {
+            margin: 5px 0 0 0;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        .comentario-texto {
+            color: #334155;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .comentario-data {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #1e293b;
+            font-weight: 500;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .btn-enviar {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .btn-enviar:hover {
+            transform: scale(1.05);
+        }
+        .selecao-estrelas {
+            display: flex;
+            gap: 5px;
+            font-size: 1.5rem;
+            color: #cbd5e1;
+            cursor: pointer;
+        }
+        .selecao-estrelas span:hover {
+            color: #fbbf24;
+        }
+        .media-avaliacoes {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .media-avaliacoes .nota {
+            font-size: 3rem;
+            font-weight: bold;
+            line-height: 1;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -20,6 +131,7 @@
                     <li><a href="#carreira">Carreira</a></li>
                     <li><a href="#duvidas">Dúvidas</a></li>
                     <li><a href="#contato">WhatsApp</a></li>
+                    <li><a href="#avaliacoes">Avaliações</a></li>
                 </ul>
             </nav>
         </div>
@@ -315,7 +427,7 @@
                 </div>
             </section>
 
-            <!-- SEÇÃO DE DÚVIDAS (ANTIGA FAQ) -->
+            <!-- SEÇÃO DE DÚVIDAS -->
             <section id="duvidas" class="section">
                 <h2>Dúvidas Frequentes</h2>
                 <div class="faq-item">
@@ -340,7 +452,7 @@
                 </div>
             </section>
 
-            <!-- NOVA SEÇÃO: CONTATO WHATSAPP -->
+            <!-- SEÇÃO DE CONTATO WHATSAPP -->
             <section id="contato" class="section">
                 <h2>📱 Fale Conosco no WhatsApp</h2>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center;">
@@ -369,21 +481,60 @@
                     </div>
                 </div>
             </section>
-        </div>
-    </main>
 
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 Programador - Descobrindo o mundo da programação</p>
-            <p>Desenvolvido com 💜 para inspirar futuros programadores</p>
-            <div class="social-links">
-                <a href="#">📱</a>
-                <a href="#">💻</a>
-                <a href="https://wa.me/5511999999999?text=Olá!%20no%20que%20posso%20lhe%20ajudar" target="_blank" style="font-size: 1.2rem;">📲</a>
-                <a href="#">📧</a>
-                <a href="#">🔗</a>
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
+            <!-- NOVA SEÇÃO: AVALIAÇÕES E COMENTÁRIOS -->
+            <section id="avaliacoes" class="section">
+                <h2>⭐ Avaliações do Site</h2>
+                <p style="margin-bottom: 30px;">Veja o que outros visitantes estão achando do conteúdo ou deixe sua opinião!</p>
+
+                <!-- Cards de avaliação e formulário em grid -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px;">
+                    <!-- Coluna da esquerda: Média e comentários recentes -->
+                    <div>
+                        <!-- Média das avaliações -->
+                        <div class="media-avaliacoes" style="margin-bottom: 30px;">
+                            <div class="nota">4.8</div>
+                            <div class="estrelas" style="color: #fbbf24; font-size: 1.5rem; margin: 10px 0;">★★★★★</div>
+                            <p style="margin: 0; opacity: 0.9;">Baseado em 127 avaliações</p>
+                        </div>
+
+                        <!-- Comentários recentes -->
+                        <h3 style="margin-bottom: 20px;">📝 Comentários Recentes</h3>
+                        
+                        <div class="comentario-card" style="margin-bottom: 20px;">
+                            <div class="comentario-header">
+                                <div class="avatar">JS</div>
+                                <div class="comentario-info">
+                                    <h4>João Silva</h4>
+                                    <div class="estrelas">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="comentario-texto">
+                                "Conteúdo excelente! As informações sobre salários me ajudaram muito a negociar meu primeiro emprego como júnior. Super recomendo!"
+                            </div>
+                            <div class="comentario-data">
+                                <span>📅 Há 2 dias</span>
+                                <span>👍 Útil (12)</span>
+                            </div>
+                        </div>
+
+                        <div class="comentario-card" style="margin-bottom: 20px;">
+                            <div class="comentario-header">
+                                <div class="avatar">MC</div>
+                                <div class="comentario-info">
+                                    <h4>Maria Costa</h4>
+                                    <div class="estrelas">★★★★☆</div>
+                                </div>
+                            </div>
+                            <div class="comentario-texto">
+                                "Muito bom o site! A seção de Sistemas de Informação com a nota de corte foi super útil. Só gostaria de ver mais exemplos de projetos práticos."
+                            </div>
+                            <div class="comentario-data">
+                                <span>📅 Há 5 dias</span>
+                                <span>👍 Útil (8)</span>
+                            </div>
+                        </div>
+
+                        <div class="comentario-card" style="margin-bottom: 20px;">
+                            <div class="comentario-header">
+                                <div class="avatar">PR</div>
