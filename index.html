@@ -18,6 +18,11 @@
             padding: 20px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             border: 1px solid #e2e8f0;
+            transition: transform 0.2s;
+        }
+        .comentario-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .comentario-header {
             display: flex;
@@ -67,13 +72,19 @@
             color: #1e293b;
             font-weight: 500;
         }
-        .form-group input, .form-group textarea {
+        .form-group input, .form-group textarea, .form-group select {
             width: 100%;
             padding: 12px;
             border: 1px solid #e2e8f0;
             border-radius: 8px;
             font-family: inherit;
             font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
         }
         .form-group textarea {
             resize: vertical;
@@ -88,19 +99,26 @@
             font-weight: bold;
             font-size: 1.1rem;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
         }
         .btn-enviar:hover {
-            transform: scale(1.05);
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(37,99,235,0.3);
         }
         .selecao-estrelas {
             display: flex;
             gap: 5px;
-            font-size: 1.5rem;
+            font-size: 2rem;
             color: #cbd5e1;
             cursor: pointer;
+            margin-bottom: 10px;
         }
-        .selecao-estrelas span:hover {
+        .selecao-estrelas span {
+            transition: color 0.2s;
+        }
+        .selecao-estrelas span:hover,
+        .selecao-estrelas span.ativa {
             color: #fbbf24;
         }
         .media-avaliacoes {
@@ -114,6 +132,23 @@
             font-size: 3rem;
             font-weight: bold;
             line-height: 1;
+        }
+        .form-comentario {
+            background-color: #f8fafc;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+        .mensagem-sucesso {
+            background-color: #22c55e;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .mensagem-sucesso.mostrar {
+            display: block;
         }
     </style>
 </head>
@@ -240,7 +275,7 @@
                 </div>
             </section>
 
-            <!-- SEÇÃO: TETO SALARIAL (SEM FONTES) -->
+            <!-- SEÇÃO: TETO SALARIAL -->
             <section id="salarios" class="section">
                 <h2>💰 Teto Salarial na Programação (2026)</h2>
                 <p style="margin-bottom: 30px;">A área de tecnologia oferece alguns dos salários mais competitivos do mercado. Confira os dados atualizados para 2026:</p>
@@ -467,7 +502,7 @@
                                 📲 Enviar Mensagem
                             </a>
                         </div>
-                        <p style="color: #4b5563;">📞 (46) 999857639</p>
+                        <p style="color: #4b5563;">📞 (46) 999857639/p>
                         <p style="color: #4b5563;">⏱️ Resposta em até 1 hora</p>
                     </div>
                     <div style="background-color: #f8fafc; padding: 30px; border-radius: 16px; text-align: center;">
@@ -482,14 +517,19 @@
                 </div>
             </section>
 
-            <!-- NOVA SEÇÃO: AVALIAÇÕES E COMENTÁRIOS -->
+            <!-- SEÇÃO DE AVALIAÇÕES E COMENTÁRIOS COM FORMULÁRIO FUNCIONAL -->
             <section id="avaliacoes" class="section">
                 <h2>⭐ Avaliações do Site</h2>
-                <p style="margin-bottom: 30px;">Veja o que outros visitantes estão achando do conteúdo ou deixe sua opinião!</p>
+                <p style="margin-bottom: 30px;">Veja o que outros visitantes estão achando ou deixe sua opinião!</p>
 
-                <!-- Cards de avaliação e formulário em grid -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px;">
-                    <!-- Coluna da esquerda: Média e comentários recentes -->
+                <!-- Mensagem de sucesso (aparece quando enviar) -->
+                <div id="mensagem-sucesso" class="mensagem-sucesso">
+                    ✅ Comentário enviado com sucesso! Ele aparecerá após aprovação.
+                </div>
+
+                <!-- Grid de 2 colunas -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                    <!-- Coluna da esquerda: Comentários existentes -->
                     <div>
                         <!-- Média das avaliações -->
                         <div class="media-avaliacoes" style="margin-bottom: 30px;">
@@ -498,43 +538,9 @@
                             <p style="margin: 0; opacity: 0.9;">Baseado em 127 avaliações</p>
                         </div>
 
-                        <!-- Comentários recentes -->
+                        <!-- Lista de comentários -->
                         <h3 style="margin-bottom: 20px;">📝 Comentários Recentes</h3>
                         
-                        <div class="comentario-card" style="margin-bottom: 20px;">
-                            <div class="comentario-header">
-                                <div class="avatar">JS</div>
-                                <div class="comentario-info">
-                                    <h4>João Silva</h4>
-                                    <div class="estrelas">★★★★★</div>
-                                </div>
-                            </div>
-                            <div class="comentario-texto">
-                                "Conteúdo excelente! As informações sobre salários me ajudaram muito a negociar meu primeiro emprego como júnior. Super recomendo!"
-                            </div>
-                            <div class="comentario-data">
-                                <span>📅 Há 2 dias</span>
-                                <span>👍 Útil (12)</span>
-                            </div>
-                        </div>
-
-                        <div class="comentario-card" style="margin-bottom: 20px;">
-                            <div class="comentario-header">
-                                <div class="avatar">MC</div>
-                                <div class="comentario-info">
-                                    <h4>Maria Costa</h4>
-                                    <div class="estrelas">★★★★☆</div>
-                                </div>
-                            </div>
-                            <div class="comentario-texto">
-                                "Muito bom o site! A seção de Sistemas de Informação com a nota de corte foi super útil. Só gostaria de ver mais exemplos de projetos práticos."
-                            </div>
-                            <div class="comentario-data">
-                                <span>📅 Há 5 dias</span>
-                                <span>👍 Útil (8)</span>
-                            </div>
-                        </div>
-
-                        <div class="comentario-card" style="margin-bottom: 20px;">
-                            <div class="comentario-header">
-                                <div class="avatar">PR</div>
+                        <div id="lista-comentarios">
+                            <!-- Comentário 1 -->
+                            <div class="comentario-card
